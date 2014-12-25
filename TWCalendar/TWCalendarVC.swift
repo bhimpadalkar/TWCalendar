@@ -34,7 +34,7 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
         self.view.addSubview(imageView)
         self.view.sendSubviewToBack(imageView)
         
-        let handler = isOneWayTrip() ? TWOneWayDateSelectionHandler(validator: validator!) : TWRoundTripDateSelectionHandler(validator: validator!) as TWDateSelectionHandler
+        let handler = isOneWayTrip() ? TWSingleDateSelectionHandler(validator: validator!) : TWRangeDateSelectionHandler(validator: validator!) as TWDateSelectionHandler
         monthViewContainer.frontMonthView?.setDateSelectionHandler(handler)
         monthViewContainer.frontMonthView?.setSelectedDates(outboundDate, inboundDate: inboundDate)
         

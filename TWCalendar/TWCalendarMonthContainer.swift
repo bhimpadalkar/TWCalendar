@@ -24,7 +24,7 @@ class TWCalendarMonthContainer: UIView {
     
     private func updateMonthView(calendarViewModel: TWCalendarViewModel){
         let minAvailableDate = NSDate()
-        frontMonthView!.showDates(calendarViewModel.daysInSelectedMonth!, leadingAdjacentDates: calendarViewModel.daysToDisplayInPreviousMonth!, trailingAdjacentDates: calendarViewModel.daysToDisplayInNextMonth!, minAvailableDate: minAvailableDate, maxAvailableDate: minAvailableDate.offsetDay(333))
+        frontMonthView!.showDates(calendarViewModel.daysInSelectedMonth!, datesOfPreviousMonth: calendarViewModel.daysToDisplayInPreviousMonth!, datesOfNextMonth: calendarViewModel.daysToDisplayInNextMonth!, minAvailableDate: minAvailableDate, maxAvailableDate: minAvailableDate.offsetDay(333))
     }
     
     private func slide(monthType: MonthType){

@@ -6,14 +6,14 @@ protocol TWRangeSelectionDelegate{
     func didStartNewRangeSelectionWith()
 }
 
-class TWRoundTripDateSelectionHandler: TWDateSelectionHandler {
-    private var outboundDate: NSDate?
-    private var inboundDate: NSDate?
+class TWRangeDateSelectionHandler: TWDateSelectionHandler {
+    private var rangeStartDate: NSDate?
+    private var rangeEndDate: NSDate?
     private var selectedDateTile: TWCalendarTile?
-    private var outboundSelectedTile: TWCalendarTile?
-    private var inboundSelectedTile: TWCalendarTile?
-    private var isOutboundDragged = false
-    private var isInboundDragged = false
+    private var startDateSelectedTile: TWCalendarTile?
+    private var endDateSelectedTile: TWCalendarTile?
+    private var isStartDateDragged = false
+    private var isEndDateDragged = false
     private let kSwipThreshold: CGFloat = 700
     var rangeSelectionDelegate: TWRangeSelectionDelegate?
     var changeMonthDelegate: TWChangeMonthDelegate?
@@ -25,51 +25,51 @@ class TWRoundTripDateSelectionHandler: TWDateSelectionHandler {
     }
     
     func setSelectedDates(outboundDate: NSDate?, inboundDate: NSDate?) {
-        self.outboundDate = outboundDate
-        self.inboundDate = inboundDate
+        self.rangeStartDate = outboundDate
+        self.rangeEndDate = inboundDate
     }
     
     func getSelectedDates() -> (NSDate, NSDate?){
-        return (outboundDate!, inboundDate)
+        return (rangeStartDate!, rangeEndDate)
     }
     
     func resetSelection(){
-        outboundSelectedTile = nil
-        inboundSelectedTile = nil
+        startDateSelectedTile = nil
+        endDateSelectedTile = nil
     }
     
     func populatePreviousSelection(tile: TWCalendarTile) {
         tile.selected = false
-        if(tile.date == outboundDate){
+        if(tile.date == rangeStartDate){
             tile.selected = true
-            outboundSelectedTile = tile
+            startDateSelectedTile = tile
         }
-        if(tile.date == inboundDate){
+        if(tile.date == rangeEndDate){
             tile.selected = true
-            inboundSelectedTile = tile
+            endDateSelectedTile = tile
         }
     }
     
     func populatePreviousHighlighting(baseDate: NSDate) {
         rangeSelectionDelegate?.didStartNewRangeSelectionWith()
-        if(inboundDate != nil){
+        if(rangeEndDate != nil){
             highlightSelection(baseDate)
         }
     }
     
     func handleDateTapped(tile: TWCalendarTile) {
-        if(outboundDate == nil || inboundDate != nil || (inboundDate == nil && tile.date!.fallsBefore(outboundDate!))){
-            outboundDate = tile.date
-            changeSelectedStateFor(outboundSelectedTile, toState: false)
-            outboundSelectedTile = tile
+        if(rangeStartDate == nil || rangeEndDate != nil || (rangeEndDate == nil && tile.date!.fallsBefore(rangeStartDate!))){
+            rangeStartDate = tile.date
+            changeSelectedStateFor(startDateSelectedTile, toState: false)
+            startDateSelectedTile = tile
             
-            changeSelectedStateFor(inboundSelectedTile, toState: false)
-            inboundDate = nil
-            inboundSelectedTile = nil
+            changeSelectedStateFor(endDateSelectedTile, toState: false)
+            rangeEndDate = nil
+            endDateSelectedTile = nil
             rangeSelectionDelegate?.didStartNewRangeSelectionWith()
         } else {
-            inboundDate = tile.date
-            inboundSelectedTile = tile
+            rangeEndDate = tile.date
+            endDateSelectedTile = tile
             highlightSelection(tile.date!)
         }
         changeSelectedStateFor(tile, toState: true)
@@ -79,17 +79,17 @@ class TWRoundTripDateSelectionHandler: TWDateSelectionHandler {
         let gestureView = recognizer.view
         let (startTile, endTile) = getStartAndEndTiles(recognizer)
         
-        if(isSwiped(recognizer.velocityInView(gestureView).x) || inboundDate == nil || isNotDraggableArea(startTile, endTile: endTile)){
+        if(isSwiped(recognizer.velocityInView(gestureView).x) || rangeEndDate == nil || isNotDraggableArea(startTile, endTile: endTile)){
             return
         }
         
         if(recognizer.state == .Began){
             if(isOutboundSameAsInbound()){
-                isOutboundDragged = isLeftDrag(recognizer.velocityInView(gestureView))
-                isInboundDragged = !isLeftDrag(recognizer.velocityInView(gestureView))
+                isStartDateDragged = isLeftDrag(recognizer.velocityInView(gestureView))
+                isEndDateDragged = !isLeftDrag(recognizer.velocityInView(gestureView))
             } else {
-                isOutboundDragged = startTile == outboundSelectedTile
-                isInboundDragged = startTile == inboundSelectedTile
+                isStartDateDragged = startTile == startDateSelectedTile
+                isEndDateDragged = startTile == endDateSelectedTile
             }
         }
         
@@ -103,10 +103,10 @@ class TWRoundTripDateSelectionHandler: TWDateSelectionHandler {
                 }
             }
             
-            if(isOutboundDragged && endTile!.date!.fallsOnOrBefore(inboundDate!)){
-                changeHighlightingFor(&outboundSelectedTile, date: &outboundDate!, newTile:endTile)
-            } else if(isInboundDragged && endTile!.date!.fallsOnOrAfter(outboundDate!)){
-                changeHighlightingFor(&inboundSelectedTile, date: &inboundDate!, newTile:endTile)
+            if(isStartDateDragged && endTile!.date!.fallsOnOrBefore(rangeEndDate!)){
+                changeHighlightingFor(&startDateSelectedTile, date: &rangeStartDate!, newTile:endTile)
+            } else if(isEndDateDragged && endTile!.date!.fallsOnOrAfter(rangeStartDate!)){
+                changeHighlightingFor(&endDateSelectedTile, date: &rangeEndDate!, newTile:endTile)
             }
         }
     }
@@ -129,13 +129,13 @@ class TWRoundTripDateSelectionHandler: TWDateSelectionHandler {
     }
     
     private func isEligibleToChangeMonth(endTile: TWCalendarTile) -> Bool {
-        return (endTile.date != outboundDate && endTile.date != inboundDate)
+        return (endTile.date != rangeStartDate && endTile.date != rangeEndDate)
     }
     
     private func changeSelectedStateFor(tile : TWCalendarTile?, toState:Bool){
         tile?.selected = toState
         tile?.refreshView()
-        validator.updateDates(outboundDate, inboundDate:inboundDate)
+        validator.updateDates(rangeStartDate, inboundDate:rangeEndDate)
     }
     
     private func changeHighlightingFor(inout tile: TWCalendarTile?, inout date: NSDate, newTile: TWCalendarTile?){
@@ -149,7 +149,7 @@ class TWRoundTripDateSelectionHandler: TWDateSelectionHandler {
     }
     
     private func isOutboundSameAsInbound() -> Bool{
-        return outboundSelectedTile == inboundSelectedTile
+        return startDateSelectedTile == endDateSelectedTile
     }
     
     private func getStartAndEndTiles(recognizer: UIPanGestureRecognizer) -> (TWCalendarTile?, TWCalendarTile?){
@@ -175,23 +175,23 @@ class TWRoundTripDateSelectionHandler: TWDateSelectionHandler {
     }
     
     private func highlightSelection(baseDate: NSDate){
-        let outboundTilePosition = outboundSelectedTile?.position
-        let inboundTilePosition = inboundSelectedTile?.position
+        let outboundTilePosition = startDateSelectedTile?.position
+        let inboundTilePosition = endDateSelectedTile?.position
         let topLeftPosition = TilePosition(row: 1, column:0)
         let bottomRightPosition = TilePosition(row: 6, column:6)
         var viewToBeHighligted = [UIView]()
         
-        if(outboundSelectedTile? != nil && inboundSelectedTile? != nil){
+        if(startDateSelectedTile? != nil && endDateSelectedTile? != nil){
             viewToBeHighligted = styler!.createViewForRange(outboundTilePosition!, endPosition: inboundTilePosition!)
         }
-        else if(inboundSelectedTile != nil){
+        else if(endDateSelectedTile != nil){
             viewToBeHighligted = styler!.createViewForRange(topLeftPosition, endPosition: inboundTilePosition!)
         }
-        else if(outboundSelectedTile != nil){
+        else if(startDateSelectedTile != nil){
             viewToBeHighligted = styler!.createViewForRange(outboundTilePosition!, endPosition: bottomRightPosition)
         }
         else {
-            if (baseDate.fallsAfter(outboundDate!) && baseDate.fallsOnOrBefore(inboundDate!)){
+            if (baseDate.fallsAfter(rangeStartDate!) && baseDate.fallsOnOrBefore(rangeEndDate!)){
                 viewToBeHighligted = styler!.createViewForRange(topLeftPosition, endPosition: bottomRightPosition)
             }
         }

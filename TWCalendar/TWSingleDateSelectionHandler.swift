@@ -1,7 +1,7 @@
 
 import UIKit
 
-class TWOneWayDateSelectionHandler: TWDateSelectionHandler {
+class TWSingleDateSelectionHandler: TWDateSelectionHandler {
     var selectedDate: NSDate?
     var selectedDateTile: TWCalendarTile?
     var validator:TWCalendarValidator

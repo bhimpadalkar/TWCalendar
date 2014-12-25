@@ -54,9 +54,9 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
         }
     }
     
-    func showDates(mainDates:NSArray, leadingAdjacentDates:NSArray, trailingAdjacentDates:NSArray, minAvailableDate:NSDate,  maxAvailableDate:NSDate){
+    func showDates(datesOfCurrentMonth:NSArray, datesOfPreviousMonth:NSArray, datesOfNextMonth:NSArray, minAvailableDate:NSDate,  maxAvailableDate:NSDate){
         var tileNum = 7;
-        let dates = [leadingAdjacentDates, mainDates, trailingAdjacentDates]
+        let dates = [datesOfPreviousMonth, datesOfCurrentMonth, datesOfNextMonth]
         dateSelectionHandler?.resetSelection()
         for i in 0...dates.count-1 {
             for j in 0...dates[i].count-1 {
@@ -78,7 +78,7 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
                 tileNum++;
             }
         }
-        dateSelectionHandler?.populatePreviousHighlighting(mainDates[0] as NSDate)
+        dateSelectionHandler?.populatePreviousHighlighting(datesOfCurrentMonth[0] as NSDate)
     }
     
     func handleDateTap(sender: TWCalendarTile){
@@ -111,7 +111,7 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
     
     func setDateSelectionHandler(dateSelectionHandler : TWDateSelectionHandler){
         self.dateSelectionHandler = dateSelectionHandler
-        if let handler = (dateSelectionHandler as? TWRoundTripDateSelectionHandler){
+        if let handler = (dateSelectionHandler as? TWRangeDateSelectionHandler){
             handler.rangeSelectionDelegate = self
             handler.styler = TWCalendarStyler(tileSize: self.tileSize, xOffset: CGFloat(self.xOffset), yOffset: CGFloat(self.yOffset))
         }
