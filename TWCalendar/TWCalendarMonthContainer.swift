@@ -9,10 +9,11 @@ class TWCalendarMonthContainer: UIView {
     var isTransitioning = false
 
     override func awakeFromNib() {
+        super.awakeFromNib()
         var frameForMonthView = self.frame
         frameForMonthView.origin.x = leftMargin
         frameForMonthView.origin.y = 0
-        frameForMonthView.size.width -= leftMargin + rightMargin
+        frameForMonthView.size.width = UIScreen.mainScreen().bounds.size.width - (leftMargin + rightMargin)
         frontMonthView = TWCalendarMonthView(frame: frameForMonthView)
         self.addSubview(frontMonthView!)
     }
