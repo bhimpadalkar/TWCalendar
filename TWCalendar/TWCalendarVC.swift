@@ -8,14 +8,15 @@ enum MonthType: Int {
 }
 
 public protocol TWCalendarDelegate{
-    func applySelectedDate()
+    func applySelectedDate(startDate: NSDate)
+    func applySelectedDateRange(startDate: NSDate, endDate: NSDate)
 }
 
 public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMessageDelegate {
 
     private var calendarViewModel: TWCalendarViewModel?;
-    public var outboundDate: NSDate?
-    public var inboundDate: NSDate?
+    public var startDate: NSDate?
+    public var endDate: NSDate?
     public var backgroundImage: UIImage?
     public var delegate: TWCalendarDelegate?
     public var selectionMode: NSString?
@@ -36,9 +37,9 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
         
         let handler = isOneWayTrip() ? TWSingleDateSelectionHandler(validator: validator!) : TWRangeDateSelectionHandler(validator: validator!) as TWDateSelectionHandler
         monthViewContainer.frontMonthView?.setDateSelectionHandler(handler)
-        monthViewContainer.frontMonthView?.setSelectedDates(outboundDate, inboundDate: inboundDate)
+        monthViewContainer.frontMonthView?.setSelectedDates(startDate, inboundDate: endDate)
         
-        let baseDateForViewModel = (outboundDate == nil) ?  NSDate() : outboundDate!
+        let baseDateForViewModel = (startDate == nil) ?  NSDate() : startDate!
         calendarViewModel = TWCalendarViewModel(date: baseDateForViewModel)
         monthViewContainer.showMonthViewFor(calendarViewModel!, monthType: .Current)
         updateHeader()
@@ -79,9 +80,10 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
     }
     
     @IBAction func applyTapped(sender: AnyObject) {
-        outboundDate = monthViewContainer.frontMonthView?.getSelectedDates().0
-        inboundDate = monthViewContainer.frontMonthView?.getSelectedDates().1?
-        delegate?.applySelectedDate()
+        startDate = monthViewContainer.frontMonthView?.getSelectedDates().0
+        endDate = monthViewContainer.frontMonthView?.getSelectedDates().1?
+        if(selectionMode == "Single") {delegate?.applySelectedDate(startDate!)}
+        else {delegate?.applySelectedDateRange(startDate!, endDate: endDate!)}
         closeTapped(sender)
     }
     
@@ -109,12 +111,12 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
     }
     
     private func getValidator() -> TWCalendarValidator{
-        let validator = TWCalendarValidator(outboundDate: outboundDate?, inboundDate: inboundDate?, isRoundTrip:!isOneWayTrip())
+        let validator = TWCalendarValidator(outboundDate: startDate?, inboundDate: endDate?, isRoundTrip:!isOneWayTrip())
         validator.delegate = self
         return validator
     }
     
     private func isOneWayTrip() ->Bool {
-        return selectionMode!.isEqualToString("OneWay")
+        return selectionMode!.isEqualToString("Single")
     }
  }
