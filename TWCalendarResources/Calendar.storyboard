@@ -94,7 +94,6 @@
                                 <state key="normal" title="Close">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" image="CloseHitState.png"/>
                                 <connections>
                                     <action selector="closeTapped:" destination="woP-Qs-h0G" eventType="touchUpInside" id="zXJ-sj-shE"/>
                                 </connections>
@@ -130,6 +129,11 @@
                             <constraint firstItem="M8T-EK-MaZ" firstAttribute="leading" secondItem="SYx-SY-mgQ" secondAttribute="centerXWithinMargins" constant="12" id="sjv-S7-KFO"/>
                             <constraint firstItem="qiJ-fS-RI8" firstAttribute="leading" secondItem="l45-I1-vEb" secondAttribute="leading" id="vSL-Ha-Hda"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Bsf-pq-f0z"/>
+                            </mask>
+                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
@@ -145,7 +149,4 @@
             <point key="canvasLocation" x="72" y="333"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="CloseHitState.png" width="42" height="42"/>
-    </resources>
 </document>
