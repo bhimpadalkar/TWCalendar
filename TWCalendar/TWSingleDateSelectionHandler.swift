@@ -18,7 +18,7 @@ class TWSingleDateSelectionHandler: TWDateSelectionHandler {
         selectedDateTile?.refreshView()
         tile.refreshView()
         selectedDateTile = tile
-        validator.updateDates(selectedDate, inboundDate: nil)
+        validator.updateDates(selectedDate, endDate: nil)
     }
     
     func handleDrag(recognizer: UIPanGestureRecognizer) {
@@ -40,8 +40,8 @@ class TWSingleDateSelectionHandler: TWDateSelectionHandler {
         
     }
     
-    func setSelectedDates(outboundDate: NSDate?, inboundDate: NSDate?) {
-        selectedDate = outboundDate
+    func setSelectedDates(startDate: NSDate?, endDate: NSDate?) {
+        selectedDate = startDate
     }
     
     func getSelectedDates() -> (NSDate, NSDate?){

@@ -24,9 +24,9 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
         self.validator = validator
     }
     
-    func setSelectedDates(outboundDate: NSDate?, inboundDate: NSDate?) {
-        self.rangeStartDate = outboundDate
-        self.rangeEndDate = inboundDate
+    func setSelectedDates(startDate: NSDate?, endDate: NSDate?) {
+        self.rangeStartDate = startDate
+        self.rangeEndDate = endDate
     }
     
     func getSelectedDates() -> (NSDate, NSDate?){
@@ -84,7 +84,7 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
         }
         
         if(recognizer.state == .Began){
-            if(isOutboundSameAsInbound()){
+            if(isStartSameAsEnd()){
                 isStartDateDragged = isLeftDrag(recognizer.velocityInView(gestureView))
                 isEndDateDragged = !isLeftDrag(recognizer.velocityInView(gestureView))
             } else {
@@ -135,12 +135,12 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
     private func changeSelectedStateFor(tile : TWCalendarTile?, toState:Bool){
         tile?.selected = toState
         tile?.refreshView()
-        validator.updateDates(rangeStartDate, inboundDate:rangeEndDate)
+        validator.updateDates(rangeStartDate, endDate:rangeEndDate)
     }
     
     private func changeHighlightingFor(inout tile: TWCalendarTile?, inout date: NSDate, newTile: TWCalendarTile?){
         if(!newTile!.enabled) {return}
-        changeSelectedStateFor(tile, toState: isOutboundSameAsInbound())
+        changeSelectedStateFor(tile, toState: isStartSameAsEnd())
         tile = newTile
         date = tile!.date!
         rangeSelectionDelegate?.didStartNewRangeSelectionWith()
@@ -148,7 +148,7 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
         highlightSelection(newTile!.date!)
     }
     
-    private func isOutboundSameAsInbound() -> Bool{
+    private func isStartSameAsEnd() -> Bool{
         return startDateSelectedTile == endDateSelectedTile
     }
     
@@ -175,20 +175,20 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
     }
     
     private func highlightSelection(baseDate: NSDate){
-        let outboundTilePosition = startDateSelectedTile?.position
-        let inboundTilePosition = endDateSelectedTile?.position
+        let startTilePosition = startDateSelectedTile?.position
+        let endTilePosition = endDateSelectedTile?.position
         let topLeftPosition = TilePosition(row: 1, column:0)
         let bottomRightPosition = TilePosition(row: 6, column:6)
         var viewToBeHighligted = [UIView]()
         
         if(startDateSelectedTile? != nil && endDateSelectedTile? != nil){
-            viewToBeHighligted = styler!.createViewForRange(outboundTilePosition!, endPosition: inboundTilePosition!)
+            viewToBeHighligted = styler!.createViewForRange(startTilePosition!, endPosition: endTilePosition!)
         }
         else if(endDateSelectedTile != nil){
-            viewToBeHighligted = styler!.createViewForRange(topLeftPosition, endPosition: inboundTilePosition!)
+            viewToBeHighligted = styler!.createViewForRange(topLeftPosition, endPosition: endTilePosition!)
         }
         else if(startDateSelectedTile != nil){
-            viewToBeHighligted = styler!.createViewForRange(outboundTilePosition!, endPosition: bottomRightPosition)
+            viewToBeHighligted = styler!.createViewForRange(startTilePosition!, endPosition: bottomRightPosition)
         }
         else {
             if (baseDate.fallsAfter(rangeStartDate!) && baseDate.fallsOnOrBefore(rangeEndDate!)){

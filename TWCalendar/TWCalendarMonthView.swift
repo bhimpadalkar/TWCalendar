@@ -85,8 +85,8 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
         dateSelectionHandler?.handleDateTapped(sender)        
     }
     
-    func setSelectedDates(outboundDate: NSDate?, inboundDate: NSDate?){
-        dateSelectionHandler!.setSelectedDates(outboundDate, inboundDate: inboundDate)
+    func setSelectedDates(startDate: NSDate?, endDate: NSDate?){
+        dateSelectionHandler!.setSelectedDates(startDate, endDate: endDate)
     }
     
     func getSelectedDates() -> (NSDate, NSDate?) {

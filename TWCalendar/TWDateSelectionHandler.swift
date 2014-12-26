@@ -13,6 +13,6 @@ protocol TWDateSelectionHandler {
     func populatePreviousSelection(tile: TWCalendarTile)
     func populatePreviousHighlighting(baseDate: NSDate)
     func resetSelection()
-    func setSelectedDates(outboundDate: NSDate?, inboundDate: NSDate?)
+    func setSelectedDates(startDate: NSDate?, endDate: NSDate?)
     func getSelectedDates() -> (NSDate, NSDate?)
 }

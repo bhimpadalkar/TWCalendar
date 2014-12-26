@@ -35,9 +35,9 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
         self.view.addSubview(imageView)
         self.view.sendSubviewToBack(imageView)
         
-        let handler = isOneWayTrip() ? TWSingleDateSelectionHandler(validator: validator!) : TWRangeDateSelectionHandler(validator: validator!) as TWDateSelectionHandler
+        let handler = isSingleDateMode() ? TWSingleDateSelectionHandler(validator: validator!) : TWRangeDateSelectionHandler(validator: validator!) as TWDateSelectionHandler
         monthViewContainer.frontMonthView?.setDateSelectionHandler(handler)
-        monthViewContainer.frontMonthView?.setSelectedDates(startDate, inboundDate: endDate)
+        monthViewContainer.frontMonthView?.setSelectedDates(startDate, endDate: endDate)
         
         let baseDateForViewModel = (startDate == nil) ?  NSDate() : startDate!
         calendarViewModel = TWCalendarViewModel(date: baseDateForViewModel)
@@ -111,12 +111,12 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
     }
     
     private func getValidator() -> TWCalendarValidator{
-        let validator = TWCalendarValidator(outboundDate: startDate?, inboundDate: endDate?, isRoundTrip:!isOneWayTrip())
+        let validator = TWCalendarValidator(startDate: startDate?, endDate: endDate?, isRangeMode:!isSingleDateMode())
         validator.delegate = self
         return validator
     }
     
-    private func isOneWayTrip() ->Bool {
+    private func isSingleDateMode() ->Bool {
         return selectionMode!.isEqualToString("Single")
     }
  }

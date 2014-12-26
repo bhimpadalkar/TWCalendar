@@ -6,26 +6,27 @@ protocol TWCalendarMessageDelegate{
 }
 
 class TWCalendarValidator {
-    private var outboundDate: NSDate?
-    private var inboundDate: NSDate?
+    private var startDate: NSDate?
+    private var endDate: NSDate?
     private var message: String
-    private var isRoundTrip: Bool
+    private var isRangeMode: Bool
     var delegate: TWCalendarMessageDelegate?
     
-    let kDefaultMessage: String = "Select a departure date"
-    let kReturnMessage: String = "Select a return date"
+    let kDefaultMessageForSingleMode: String = "Select a date"
+    let kDefaultMessageForRangeMode: String = "Select start date"
+    let kMessageToSelectEndDate: String = "Select end date"
     
-    init(outboundDate: NSDate?, inboundDate: NSDate?, isRoundTrip: Bool){
-        self.outboundDate = outboundDate
-        self.inboundDate = inboundDate
-        self.message = kDefaultMessage
-        self.isRoundTrip = isRoundTrip
+    init(startDate: NSDate?, endDate: NSDate?, isRangeMode: Bool){
+        self.startDate = startDate
+        self.endDate = endDate
+        self.message = kDefaultMessageForSingleMode
+        self.isRangeMode = isRangeMode
         updateMessage()
     }
     
-    func updateDates(outboundDate:NSDate?, inboundDate:NSDate?){
-        self.outboundDate = outboundDate?
-        self.inboundDate = inboundDate?
+    func updateDates(startDate:NSDate?, endDate:NSDate?){
+        self.startDate = startDate?
+        self.endDate = endDate?
         updateMessage()
         delegate?.datesDidChange(message, activateApply: isValidSelection())
     }
@@ -37,25 +38,24 @@ class TWCalendarValidator {
     private func updateMessage(){
         var monthAndYearFormatter = NSDateFormatter()
         monthAndYearFormatter.dateFormat = "MM/dd"
-        if !isRoundTrip{
-            message = (outboundDate == nil) ? kDefaultMessage : monthAndYearFormatter.stringFromDate(outboundDate!)
+        if !isRangeMode{
+            message = (startDate == nil) ? kDefaultMessageForSingleMode : monthAndYearFormatter.stringFromDate(startDate!)
         }else{
-            if let date = inboundDate? {
-                let outboundMessage = monthAndYearFormatter.stringFromDate(outboundDate!) + " - "
-                message = outboundMessage + monthAndYearFormatter.stringFromDate(date)
-            } else if let date = outboundDate? {
-                message = kReturnMessage
+            if let date = endDate? {
+                message = monthAndYearFormatter.stringFromDate(startDate!) + " - " + monthAndYearFormatter.stringFromDate(date)
+            } else if let date = startDate? {
+                message = kDefaultMessageForRangeMode
             }
         }
     }
     
     private func isValidSelection() -> Bool{
-        if !isRoundTrip{
-            if let selectDate = outboundDate? {
+        if !isRangeMode{
+            if let selectDate = startDate? {
                 return true
             }
         } else{
-            if let selectedDate = inboundDate? {
+            if let selectedDate = endDate? {
                 return true
             }
         }
