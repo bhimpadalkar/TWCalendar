@@ -48,6 +48,7 @@ class TWCalendarTile: UIButton {
         if(selected){
             self.backgroundColor = UIColor.whiteColor()
         } else {
+            self.backgroundColor = UIColor.clearColor()
             if(isOfToday!){
                 self.layer.borderWidth = 1
             }
