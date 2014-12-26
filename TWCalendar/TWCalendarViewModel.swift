@@ -5,14 +5,17 @@ class TWCalendarViewModel {
    
     private var formatter : NSDateFormatter
     var baseDate: NSDate
+    var minDate, maxDate: NSDate?
     var daysInSelectedMonth, daysToDisplayInNextMonth, daysToDisplayInPreviousMonth : NSArray?
     var monthAndYearString = ""
     
-    init(date : NSDate){
-        baseDate = date
+    init(baseDate : NSDate, minDate: NSDate?, maxDate: NSDate?){
+        self.baseDate = baseDate
+        self.minDate = minDate
+        self.maxDate = maxDate
         formatter = NSDateFormatter()
         formatter.dateFormat = "MMMM yyyy"
-        setupViewModelFor(date)
+        setupViewModelFor(baseDate)
     }
     
     func moveToNextMonth(){

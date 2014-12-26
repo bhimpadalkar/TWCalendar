@@ -15,12 +15,12 @@ public protocol TWCalendarDelegate{
 public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMessageDelegate {
 
     private var calendarViewModel: TWCalendarViewModel?;
-    public var startDate: NSDate?
-    public var endDate: NSDate?
+    private var startDate: NSDate?
+    private var endDate: NSDate?
+    private var selectionMode: NSString?
+    private var validator: TWCalendarValidator?
     public var backgroundImage: UIImage?
     public var delegate: TWCalendarDelegate?
-    public var selectionMode: NSString?
-    private var validator: TWCalendarValidator?
     @IBOutlet weak var monthViewContainer: TWCalendarMonthContainer!
     @IBOutlet weak var monthNameLabel: UILabel!
     @IBOutlet weak var messageIndicatorLabel: UILabel!
@@ -28,27 +28,34 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        self.validator = getValidator()
         
         var imageView = UIImageView(frame: self.view.frame)
         imageView.image = backgroundImage?
         self.view.addSubview(imageView)
         self.view.sendSubviewToBack(imageView)
         
-        let handler = isSingleDateMode() ? TWSingleDateSelectionHandler(validator: validator!) : TWRangeDateSelectionHandler(validator: validator!) as TWDateSelectionHandler
-        monthViewContainer.frontMonthView?.setDateSelectionHandler(handler)
-        monthViewContainer.frontMonthView?.setSelectedDates(startDate, endDate: endDate)
-        
-        let baseDateForViewModel = (startDate == nil) ?  NSDate() : startDate!
-        calendarViewModel = TWCalendarViewModel(date: baseDateForViewModel)
-        monthViewContainer.showMonthViewFor(calendarViewModel!, monthType: .Current)
-        updateHeader()
-        
         var panGesture = UIPanGestureRecognizer(target: monthViewContainer.frontMonthView!, action: "handleDrag:")
         self.monthViewContainer.frontMonthView!.addGestureRecognizer(panGesture)
         self.monthViewContainer.frontMonthView!.setChangeMonthDelegate(self)
         
+        let handler = isSingleDateMode() ? TWSingleDateSelectionHandler(validator: validator!) : TWRangeDateSelectionHandler(validator: validator!) as TWDateSelectionHandler
+        monthViewContainer.frontMonthView?.setDateSelectionHandler(handler)
+        monthViewContainer.frontMonthView?.setSelectedDates(startDate, endDate: endDate)
+        
+        monthViewContainer.showMonthViewFor(calendarViewModel!, monthType: .Current)
+        updateHeader()
+        
         validator!.getInitialValidation()
+    }
+    
+    public func initializeCalendar(selectionMode: NSString, startDate: NSDate?, endDate: NSDate?, minDate: NSDate?, maxDate: NSDate?) {
+        self.selectionMode = selectionMode
+        self.startDate = startDate
+        self.endDate = endDate
+        self.validator = getValidator()
+        
+        let baseDateForViewModel = (startDate == nil) ?  NSDate() : startDate!
+        calendarViewModel = TWCalendarViewModel(baseDate: baseDateForViewModel, minDate: minDate, maxDate: maxDate)
     }
     
     public override func shouldAutorotate() -> Bool {

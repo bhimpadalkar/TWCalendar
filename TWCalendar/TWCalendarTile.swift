@@ -1,11 +1,6 @@
 
 import UIKit
 
-enum TWTileType: CGFloat{
-    case Normal = 255
-    case Disabled = 153
-}
-
 class TilePosition: NSObject{
     internal var row = 0
     internal var column = 0
@@ -19,7 +14,6 @@ class TWCalendarTile: UIButton {
     var date: NSDate?
     var tileData: NSString?
     var isOfToday: Bool?
-    var type: TWTileType?
     var position: TilePosition?
     
     init(frame: CGRect, position: TilePosition) {
@@ -44,7 +38,8 @@ class TWCalendarTile: UIButton {
     
     func refreshView(){
         setTileData(String(date!.day()))
-        self.setTitleColor(UIColor(white: type!.rawValue/255, alpha: 1), forState: .Normal)
+        let titleColor = self.enabled ? UIColor.whiteColor() : UIColor.grayColor()
+        self.setTitleColor(titleColor, forState: .Normal)
         if(selected){
             self.backgroundColor = UIColor.whiteColor()
         } else {
@@ -58,7 +53,6 @@ class TWCalendarTile: UIButton {
         date = nil
         tileData = nil
         isOfToday = false
-        type = .Normal
         self.backgroundColor = UIColor.clearColor()
     }
 }

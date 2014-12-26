@@ -54,7 +54,7 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
         }
     }
     
-    func showDates(datesOfCurrentMonth:NSArray, datesOfPreviousMonth:NSArray, datesOfNextMonth:NSArray, minAvailableDate:NSDate,  maxAvailableDate:NSDate){
+    func showDates(datesOfCurrentMonth:NSArray, datesOfPreviousMonth:NSArray, datesOfNextMonth:NSArray, minAvailableDate:NSDate?,  maxAvailableDate:NSDate?){
         var tileNum = 7;
         let dates = [datesOfPreviousMonth, datesOfCurrentMonth, datesOfNextMonth]
         dateSelectionHandler?.resetSelection()
@@ -63,14 +63,10 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
                 let d = dates[i][j] as NSDate;
                 let tile = dateTiles[tileNum] as TWCalendarTile
                 tile.resetData()
-                tile.type = i==1 ? .Normal : .Disabled;
                 tile.date = d
                 dateSelectionHandler!.populatePreviousSelection(tile)
                 tile.isOfToday = NSDate().isSameDayAs(d)
-                if(d.fallsOnOrAfter(minAvailableDate) && d.fallsOnOrBefore(maxAvailableDate)){
-                    tile.enabled = true
-                } else {
-                    tile.type = .Disabled
+                if((minAvailableDate != nil && d.fallsBefore(minAvailableDate!)) || (maxAvailableDate != nil && d.fallsAfter(maxAvailableDate!))) {
                     tile.enabled = false
                 }
                 
