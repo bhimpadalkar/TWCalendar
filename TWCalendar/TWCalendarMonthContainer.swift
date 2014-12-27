@@ -3,7 +3,7 @@ import UIKit
 
 class TWCalendarMonthContainer: UIView {
     
-    var frontMonthView: TWCalendarMonthView?
+    var monthView: TWCalendarMonthView?
     private let leftMargin = 17 as CGFloat
     private let rightMargin = 17 as CGFloat
     var isTransitioning = false
@@ -14,8 +14,8 @@ class TWCalendarMonthContainer: UIView {
         frameForMonthView.origin.x = leftMargin
         frameForMonthView.origin.y = 0
         frameForMonthView.size.width = UIScreen.mainScreen().bounds.size.width - (leftMargin + rightMargin)
-        frontMonthView = TWCalendarMonthView(frame: frameForMonthView)
-        self.addSubview(frontMonthView!)
+        monthView = TWCalendarMonthView(frame: frameForMonthView)
+        self.addSubview(monthView!)
     }
     
     func showMonthViewFor(calendarViewModel: TWCalendarViewModel, monthType: MonthType){
@@ -24,7 +24,7 @@ class TWCalendarMonthContainer: UIView {
     }
     
     private func updateMonthView(calendarViewModel: TWCalendarViewModel){
-        frontMonthView!.showDates(calendarViewModel.daysInSelectedMonth!, datesOfPreviousMonth: calendarViewModel.daysToDisplayInPreviousMonth!, datesOfNextMonth: calendarViewModel.daysToDisplayInNextMonth!, minAvailableDate: calendarViewModel.minDate, maxAvailableDate: calendarViewModel.maxDate)
+        monthView!.showDates(calendarViewModel.daysInSelectedMonth!, datesOfPreviousMonth: calendarViewModel.daysToDisplayInPreviousMonth!, datesOfNextMonth: calendarViewModel.daysToDisplayInNextMonth!, minAvailableDate: calendarViewModel.minDate, maxAvailableDate: calendarViewModel.maxDate)
     }
     
     private func slide(monthType: MonthType){

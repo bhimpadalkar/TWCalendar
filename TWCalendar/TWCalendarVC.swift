@@ -34,13 +34,13 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
         self.view.addSubview(imageView)
         self.view.sendSubviewToBack(imageView)
         
-        var panGesture = UIPanGestureRecognizer(target: monthViewContainer.frontMonthView!, action: "handleDrag:")
-        self.monthViewContainer.frontMonthView!.addGestureRecognizer(panGesture)
-        self.monthViewContainer.frontMonthView!.setChangeMonthDelegate(self)
+        var panGesture = UIPanGestureRecognizer(target: monthViewContainer.monthView!, action: "handleDrag:")
+        self.monthViewContainer.monthView!.addGestureRecognizer(panGesture)
+        self.monthViewContainer.monthView!.setChangeMonthDelegate(self)
         
         let handler = isSingleDateMode() ? TWSingleDateSelectionHandler(validator: validator!) : TWRangeDateSelectionHandler(validator: validator!) as TWDateSelectionHandler
-        monthViewContainer.frontMonthView?.setDateSelectionHandler(handler)
-        monthViewContainer.frontMonthView?.setSelectedDates(startDate, endDate: endDate)
+        monthViewContainer.monthView?.setDateSelectionHandler(handler)
+        monthViewContainer.monthView?.setSelectedDates(startDate, endDate: endDate)
         
         monthViewContainer.showMonthViewFor(calendarViewModel!, monthType: .Current)
         updateHeader()
@@ -87,8 +87,8 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
     }
     
     @IBAction func applyTapped(sender: AnyObject) {
-        startDate = monthViewContainer.frontMonthView?.getSelectedDates().0
-        endDate = monthViewContainer.frontMonthView?.getSelectedDates().1?
+        startDate = monthViewContainer.monthView?.getSelectedDates().0
+        endDate = monthViewContainer.monthView?.getSelectedDates().1?
         if(selectionMode == "Single") {delegate?.applySelectedDate(startDate!)}
         else {delegate?.applySelectedDateRange(startDate!, endDate: endDate!)}
         closeTapped(sender)
