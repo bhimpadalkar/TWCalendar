@@ -22,9 +22,9 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
     public var backgroundImage: UIImage?
     public var delegate: TWCalendarDelegate?
     @IBOutlet weak var monthViewContainer: TWCalendarMonthContainer!
-    @IBOutlet weak var monthNameLabel: UILabel!
-    @IBOutlet weak var messageIndicatorLabel: UILabel!
-    @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var monthNameLabel: UILabel?
+    @IBOutlet weak var messageIndicatorLabel: UILabel?
+    @IBOutlet weak var applyButton: UIButton?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
     }
     
     private func updateHeader(){
-        monthNameLabel!.text = calendarViewModel!.monthAndYearString
+        monthNameLabel?.text = calendarViewModel!.monthAndYearString
     }
     
     private func swipe(recognizer : UISwipeGestureRecognizer){
@@ -113,8 +113,8 @@ public class TWCalendarVC: UIViewController, TWChangeMonthDelegate, TWCalendarMe
     }
     
     func datesDidChange(message: String, activateApply: Bool) {
-        messageIndicatorLabel.text = message
-        applyButton.enabled = activateApply
+        messageIndicatorLabel?.text = message
+        applyButton?.enabled = activateApply
     }
     
     private func getValidator() -> TWCalendarValidator{
