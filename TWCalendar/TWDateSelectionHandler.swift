@@ -2,11 +2,11 @@
 import UIKit
 
 protocol TWChangeMonthDelegate{
-    func shouldChangeMonthTo(type: MonthType)
+    func changeMonthTo(type: MonthType)
 }
 
 protocol TWDateSelectionHandler {
-    var validator: TWCalendarValidator {get set}
+    var validator: TWCalendarValidator? {get set}
     var changeMonthDelegate: TWChangeMonthDelegate? {get set}
     func handleDateTapped(tile: TWCalendarTile)
     func handleDrag(recognizer: UIPanGestureRecognizer)

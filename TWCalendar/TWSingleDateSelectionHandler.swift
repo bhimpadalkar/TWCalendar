@@ -4,11 +4,15 @@ import UIKit
 class TWSingleDateSelectionHandler: TWDateSelectionHandler {
     var selectedDate: NSDate?
     var selectedDateTile: TWCalendarTile?
-    var validator:TWCalendarValidator
+    var validator:TWCalendarValidator?
     var changeMonthDelegate: TWChangeMonthDelegate?
 
     init(validator: TWCalendarValidator){
         self.validator = validator
+    }
+    
+    init(){
+        
     }
     
     func handleDateTapped(tile: TWCalendarTile) {
@@ -18,13 +22,13 @@ class TWSingleDateSelectionHandler: TWDateSelectionHandler {
         selectedDateTile?.refreshView()
         tile.refreshView()
         selectedDateTile = tile
-        validator.updateDates(selectedDate, endDate: nil)
+        validator?.updateDates(selectedDate, endDate: nil)
     }
     
     func handleDrag(recognizer: UIPanGestureRecognizer) {
         let velocity = recognizer.velocityInView(recognizer.view).x
-        if(velocity < -300) {changeMonthDelegate?.shouldChangeMonthTo(.Next)}
-        if(velocity > 300) {changeMonthDelegate?.shouldChangeMonthTo(.Previous)}
+        if(velocity < -300) {changeMonthDelegate?.changeMonthTo(.Next)}
+        if(velocity > 300) {changeMonthDelegate?.changeMonthTo(.Previous)}
     }
     
     func populatePreviousSelection(tile: TWCalendarTile) {

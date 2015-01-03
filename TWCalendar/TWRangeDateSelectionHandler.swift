@@ -17,11 +17,15 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
     private let kSwipThreshold: CGFloat = 700
     var rangeSelectionDelegate: TWRangeSelectionDelegate?
     var changeMonthDelegate: TWChangeMonthDelegate?
-    var validator:TWCalendarValidator
+    var validator:TWCalendarValidator?
     var styler: TWCalendarStyler?
 
     init(validator: TWCalendarValidator){
         self.validator = validator
+    }
+    
+    init() {
+        
     }
     
     func setSelectedDates(startDate: NSDate?, endDate: NSDate?) {
@@ -96,10 +100,10 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
         if(recognizer.state == .Changed){
             if(isEligibleToChangeMonth(endTile!)){
                 if(endTile?.position?.row == 1 && endTile?.position?.column == 0){
-                    changeMonthDelegate?.shouldChangeMonthTo(.Previous)
+                    changeMonthDelegate?.changeMonthTo(.Previous)
                 }
                 if(endTile?.position?.row == 6 && endTile?.position?.column == 6){
-                    changeMonthDelegate?.shouldChangeMonthTo(.Next)
+                    changeMonthDelegate?.changeMonthTo(.Next)
                 }
             }
             
@@ -118,10 +122,10 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
     private func isSwiped(velocity: CGFloat) -> Bool{
         switch velocity {
             case let v where v > kSwipThreshold:
-                changeMonthDelegate?.shouldChangeMonthTo(.Previous)
+                changeMonthDelegate?.changeMonthTo(.Previous)
                 return true
             case let v where v < -kSwipThreshold:
-                changeMonthDelegate?.shouldChangeMonthTo(.Next)
+                changeMonthDelegate?.changeMonthTo(.Next)
                 return true
             default:
                 return false
@@ -135,7 +139,7 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
     private func changeSelectedStateFor(tile : TWCalendarTile?, toState:Bool){
         tile?.selected = toState
         tile?.refreshView()
-        validator.updateDates(rangeStartDate, endDate:rangeEndDate)
+//        validator.updateDates(rangeStartDate, endDate:rangeEndDate)
     }
     
     private func changeHighlightingFor(inout tile: TWCalendarTile?, inout date: NSDate, newTile: TWCalendarTile?){
