@@ -36,7 +36,6 @@
 		D54C00461A32BB0F006ED692 /* TWCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00451A32BB0F006ED692 /* TWCalendarViewModel.swift */; };
 		D54C00491A32C0A5006ED692 /* TWDateAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00481A32C0A5006ED692 /* TWDateAdditions.swift */; };
 		D55008D81A3C85CE0001F0D7 /* TWCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = D55008881A3C2A1B0001F0D7 /* TWCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D55009B11A3D2A9D0001F0D7 /* TWCalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55009B01A3D2A9D0001F0D7 /* TWCalendarHelper.swift */; };
 		D56BC88C1A427844004ECF84 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D56BC88B1A427844004ECF84 /* Calendar.storyboard */; };
 		D5D10A9C1A3B44A800750C3D /* TWCalendarViewModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00451A32BB0F006ED692 /* TWCalendarViewModel.swift */; };
 		D5D10A9D1A3B44A800750C3D /* TWCalendarStyler.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */; };
@@ -115,7 +114,6 @@
 		D54C00481A32C0A5006ED692 /* TWDateAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWDateAdditions.swift; sourceTree = "<group>"; };
 		D55008881A3C2A1B0001F0D7 /* TWCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCalendar.h; sourceTree = "<group>"; };
 		D55008921A3C7ED70001F0D7 /* TWCalendar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TWCalendar-Bridging-Header.h"; sourceTree = "<group>"; };
-		D55009B01A3D2A9D0001F0D7 /* TWCalendarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWCalendarHelper.swift; sourceTree = "<group>"; };
 		D55009F71A3D302E0001F0D7 /* TWCalendar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TWCalendar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D55009FA1A3D302E0001F0D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D56BC88B1A427844004ECF84 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 			children = (
 				D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */,
 				D54C00361A32BAE0006ED692 /* TWCalendarValidator.swift */,
-				D55009B01A3D2A9D0001F0D7 /* TWCalendarHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -408,7 +405,6 @@
 				D54C003C1A32BAE0006ED692 /* TWDateSelectionHandler.swift in Sources */,
 				D54C003E1A32BAE0006ED692 /* TWRangeDateSelectionHandler.swift in Sources */,
 				D54C00461A32BB0F006ED692 /* TWCalendarViewModel.swift in Sources */,
-				D55009B11A3D2A9D0001F0D7 /* TWCalendarHelper.swift in Sources */,
 				D54C00341A32BABA006ED692 /* TWCalendarVC.swift in Sources */,
 				D54C003B1A32BAE0006ED692 /* TWCalendarValidator.swift in Sources */,
 				D54C00491A32C0A5006ED692 /* TWDateAdditions.swift in Sources */,
