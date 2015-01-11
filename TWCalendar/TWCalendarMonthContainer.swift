@@ -6,68 +6,71 @@ public class TWCalendarMonthContainer: UIView, TWChangeMonthDelegate {
     private var calendarViewModel: TWCalendarViewModel!
     var selectionMode: NSString!
     var monthView: TWCalendarMonthView!
-    private let leftMargin = 17 as CGFloat
-    private let rightMargin = 17 as CGFloat
+    private let leftMargin = 0 as CGFloat
+    private let rightMargin = 0 as CGFloat
     var isTransitioning = false
     private var startDate: NSDate?
     private var endDate: NSDate?
-
-    override public func awakeFromNib() {
-        super.awakeFromNib()
-        var frameForMonthView = self.frame
-        frameForMonthView.origin.x = leftMargin
-        frameForMonthView.origin.y = 0
-        frameForMonthView.size.width = UIScreen.mainScreen().bounds.size.width - (leftMargin + rightMargin)
-        monthView = TWCalendarMonthView(frame: frameForMonthView)
-        self.addSubview(monthView)
-        
-        var panGesture = UIPanGestureRecognizer(target: monthView!, action: "handleDrag:")
-        self.monthView.addGestureRecognizer(panGesture)
-        self.monthView.setChangeMonthDelegate(self)
-        initializeCalendar(nil, endDate: nil, minDate: nil, maxDate: nil, selectionMode: "Single")
-        showMonthViewFor(.Current)
-    }
     
-    public override init(frame:CGRect) {
-        super.init(frame:frame)
-        var frameForMonthView = self.frame
-        frameForMonthView.origin.x = leftMargin
-        frameForMonthView.origin.y = 0
-        frameForMonthView.size.width = UIScreen.mainScreen().bounds.size.width - (leftMargin + rightMargin)
-        monthView = TWCalendarMonthView(frame: frameForMonthView)
-        self.addSubview(monthView)
-        
-        var panGesture = UIPanGestureRecognizer(target: monthView!, action: "handleDrag:")
-        self.monthView.addGestureRecognizer(panGesture)
-        self.monthView.setChangeMonthDelegate(self)
-        initializeCalendar(nil, endDate: nil, minDate: nil, maxDate: nil, selectionMode: "Single")
-        showMonthViewFor(.Current)
-    }
-
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        initializeCalendar(nil, endDate: nil, minDate: nil, maxDate: nil, selectionMode: "Single")
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        initializeCalendar(nil, endDate: nil, minDate: nil, maxDate: nil, selectionMode: "Single")
+    }
+    
+    public override func drawRect(rect: CGRect) {
+        addMonthView()
+    }
+    
     public func initializeCalendar(startDate: NSDate?, endDate: NSDate?, minDate: NSDate?, maxDate: NSDate?, selectionMode: NSString) {
         self.selectionMode = selectionMode
-        let handler = isSingleDateMode() ? TWSingleDateSelectionHandler() : TWRangeDateSelectionHandler() as TWDateSelectionHandler
-        monthView.setDateSelectionHandler(handler)
         
         self.startDate = startDate
         self.endDate = endDate
-        monthView.setSelectedDates(startDate, endDate: endDate)
         
         let baseDateForViewModel = (startDate == nil) ?  NSDate() : startDate!
         calendarViewModel = TWCalendarViewModel(baseDate: baseDateForViewModel, minDate: minDate, maxDate: maxDate)
     }
     
+    public func showNextMonth() {
+        showMonthViewFor(.Next)
+    }
+    
+    public func showPreviousMonth() {
+        showMonthViewFor(.Previous)
+    }
+    
+    private func addMonthView() {
+        var frameForMonthView = self.bounds
+        frameForMonthView.origin.x = leftMargin
+        frameForMonthView.size.width -= (leftMargin + rightMargin)
+        monthView = TWCalendarMonthView(frame: frameForMonthView)
+        self.addSubview(monthView)
+        
+        var panGesture = UIPanGestureRecognizer(target: monthView!, action: "handleDrag:")
+        self.monthView.addGestureRecognizer(panGesture)
+        self.monthView.setChangeMonthDelegate(self)
+        
+        let handler = isSingleDateMode() ? TWSingleDateSelectionHandler() : TWRangeDateSelectionHandler() as TWDateSelectionHandler
+        monthView.setDateSelectionHandler(handler)
+        monthView.setSelectedDates(startDate, endDate: endDate)
+        showMonthViewFor(.Current)
+    }
+    
     func changeMonthTo(monthType: MonthType) {
         if(isTransitioning) {return}
         showMonthViewFor(monthType)
-//        updateHeader()
     }
     
-    func showMonthViewFor(monthType: MonthType){
+    private func showMonthViewFor(monthType: MonthType){
         slide(monthType)
         if(monthType == .Next){
             calendarViewModel.moveToNextMonth()
@@ -78,7 +81,7 @@ public class TWCalendarMonthContainer: UIView, TWChangeMonthDelegate {
     }
     
     private func updateMonthView(){
-        monthView!.showDates(calendarViewModel!.daysInSelectedMonth!, datesOfPreviousMonth: calendarViewModel.daysToDisplayInPreviousMonth!,
+        monthView?.showDates(calendarViewModel!.daysInSelectedMonth!, datesOfPreviousMonth: calendarViewModel.daysToDisplayInPreviousMonth!,
             datesOfNextMonth: calendarViewModel.daysToDisplayInNextMonth!,
             minAvailableDate: calendarViewModel.minDate,
             maxAvailableDate: calendarViewModel.maxDate)

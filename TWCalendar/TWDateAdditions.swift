@@ -1,9 +1,9 @@
 
 import Foundation
 
-extension NSDate {
+public extension NSDate {
     
-    class func dateFor(day: NSInteger, month: NSInteger, year: NSInteger) -> NSDate {
+    public class func dateFor(day: NSInteger, month: NSInteger, year: NSInteger) -> NSDate {
         let gregorian = NSCalendar(calendarIdentifier: NSGregorianCalendar)
         var components = NSDateComponents()
         components.day = day

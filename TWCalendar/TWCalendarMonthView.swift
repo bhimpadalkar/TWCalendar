@@ -15,13 +15,9 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         let horizontalSpacingBetweenTiles = (Int(frame.size.width) - ((numOfColumns) * Int(tileSize.width))) / (numOfColumns - 1)
         xOffset = horizontalSpacingBetweenTiles + Int(tileSize.width)
         yOffset = verticalSpacingBetweenTiles + Int(tileSize.height)
-        
-        let tileAccessibilityFormatter = NSDateFormatter()
-        tileAccessibilityFormatter.dateFormat = "EEEE, MMMM d"
 
         createHeaderTiles(xOffset)
         createDayTiles(xOffset, yOffset: yOffset)
