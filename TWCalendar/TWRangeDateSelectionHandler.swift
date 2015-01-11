@@ -44,11 +44,11 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
     
     func populatePreviousSelection(tile: TWCalendarTile) {
         tile.selected = false
-        if(tile.date == rangeStartDate){
+        if(rangeStartDate != nil && tile.date!.isSameDayAs(rangeStartDate!)){
             tile.selected = true
             startDateSelectedTile = tile
         }
-        if(tile.date == rangeEndDate){
+        if(rangeEndDate != nil && tile.date!.isSameDayAs(rangeEndDate!)){
             tile.selected = true
             endDateSelectedTile = tile
         }

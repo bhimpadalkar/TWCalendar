@@ -32,11 +32,10 @@ class TWSingleDateSelectionHandler: TWDateSelectionHandler {
     }
     
     func populatePreviousSelection(tile: TWCalendarTile) {
-        if(tile.date == selectedDate){
+        tile.selected = false
+        if(selectedDate != nil && tile.date!.isSameDayAs(selectedDate!)){
             tile.selected = true
             selectedDateTile = tile
-        } else {
-            tile.selected = false
         }
     }
     

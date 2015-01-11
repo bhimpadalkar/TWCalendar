@@ -67,7 +67,6 @@ public class TWCalendarVC: UIViewController, TWCalendarMessageDelegate {
     }
     
     private func navigateToMonth(month: MonthType){
-        monthViewContainer.showMonthViewFor(month)
     }
     
     func datesDidChange(message: String, activateApply: Bool) {
