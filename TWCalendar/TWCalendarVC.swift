@@ -18,7 +18,7 @@ public class TWCalendarVC: UIViewController, TWCalendarMessageDelegate {
     private var validator: TWCalendarValidator?
     public var backgroundImage: UIImage?
     public var delegate: TWCalendarDelegate?
-    @IBOutlet weak var monthViewContainer: TWCalendarMonthContainer!
+    @IBOutlet weak var monthViewContainer: TWCalendarView!
     @IBOutlet weak var monthNameLabel: UILabel?
     @IBOutlet weak var messageIndicatorLabel: UILabel?
     @IBOutlet weak var applyButton: UIButton?

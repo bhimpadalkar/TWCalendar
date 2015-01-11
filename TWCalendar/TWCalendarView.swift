@@ -1,7 +1,7 @@
 
 import UIKit
 
-public class TWCalendarMonthContainer: UIView, TWChangeMonthDelegate {
+public class TWCalendarView: UIView, TWChangeMonthDelegate {
     
     private var calendarViewModel: TWCalendarViewModel!
     var selectionMode: NSString!
