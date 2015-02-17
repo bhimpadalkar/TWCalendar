@@ -17,12 +17,7 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
     private let kSwipThreshold: CGFloat = 700
     var rangeSelectionDelegate: TWRangeSelectionDelegate?
     var changeMonthDelegate: TWChangeMonthDelegate?
-    var validator:TWCalendarValidator?
     var styler: TWCalendarStyler?
-
-    init(validator: TWCalendarValidator){
-        self.validator = validator
-    }
     
     init() {
         

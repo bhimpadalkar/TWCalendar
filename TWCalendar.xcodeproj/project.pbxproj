@@ -24,9 +24,7 @@
 
 /* Begin PBXBuildFile section */
 		D54C00231A32B978006ED692 /* libTWCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D54C00171A32B978006ED692 /* libTWCalendar.a */; };
-		D54C00341A32BABA006ED692 /* TWCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00331A32BABA006ED692 /* TWCalendarVC.swift */; };
 		D54C003A1A32BAE0006ED692 /* TWCalendarStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */; };
-		D54C003B1A32BAE0006ED692 /* TWCalendarValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00361A32BAE0006ED692 /* TWCalendarValidator.swift */; };
 		D54C003C1A32BAE0006ED692 /* TWDateSelectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00371A32BAE0006ED692 /* TWDateSelectionHandler.swift */; };
 		D54C003D1A32BAE0006ED692 /* TWSingleDateSelectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00381A32BAE0006ED692 /* TWSingleDateSelectionHandler.swift */; };
 		D54C003E1A32BAE0006ED692 /* TWRangeDateSelectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00391A32BAE0006ED692 /* TWRangeDateSelectionHandler.swift */; };
@@ -39,14 +37,12 @@
 		D56BC88C1A427844004ECF84 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D56BC88B1A427844004ECF84 /* Calendar.storyboard */; };
 		D5D10A9C1A3B44A800750C3D /* TWCalendarViewModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00451A32BB0F006ED692 /* TWCalendarViewModel.swift */; };
 		D5D10A9D1A3B44A800750C3D /* TWCalendarStyler.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */; };
-		D5D10A9E1A3B44A800750C3D /* TWCalendarValidator.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00361A32BAE0006ED692 /* TWCalendarValidator.swift */; };
 		D5D10A9F1A3B44A800750C3D /* TWDateSelectionHandler.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00371A32BAE0006ED692 /* TWDateSelectionHandler.swift */; };
 		D5D10AA01A3B44A800750C3D /* TWSingleDateSelectionHandler.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00381A32BAE0006ED692 /* TWSingleDateSelectionHandler.swift */; };
 		D5D10AA11A3B44A800750C3D /* TWRangeDateSelectionHandler.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00391A32BAE0006ED692 /* TWRangeDateSelectionHandler.swift */; };
 		D5D10AA21A3B44A800750C3D /* TWCalendarView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C003F1A32BAFA006ED692 /* TWCalendarView.swift */; };
 		D5D10AA31A3B44A800750C3D /* TWCalendarMonthView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00401A32BAFA006ED692 /* TWCalendarMonthView.swift */; };
 		D5D10AA41A3B44A800750C3D /* TWCalendarTile.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00411A32BAFA006ED692 /* TWCalendarTile.swift */; };
-		D5D10AA61A3B44A800750C3D /* TWCalendarVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00331A32BABA006ED692 /* TWCalendarVC.swift */; };
 		D5D10AA71A3B44A800750C3D /* TWDateAdditions.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00481A32C0A5006ED692 /* TWDateAdditions.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,14 +79,12 @@
 			files = (
 				D5D10A9C1A3B44A800750C3D /* TWCalendarViewModel.swift in CopyFiles */,
 				D5D10A9D1A3B44A800750C3D /* TWCalendarStyler.swift in CopyFiles */,
-				D5D10A9E1A3B44A800750C3D /* TWCalendarValidator.swift in CopyFiles */,
 				D5D10A9F1A3B44A800750C3D /* TWDateSelectionHandler.swift in CopyFiles */,
 				D5D10AA01A3B44A800750C3D /* TWSingleDateSelectionHandler.swift in CopyFiles */,
 				D5D10AA11A3B44A800750C3D /* TWRangeDateSelectionHandler.swift in CopyFiles */,
 				D5D10AA21A3B44A800750C3D /* TWCalendarView.swift in CopyFiles */,
 				D5D10AA31A3B44A800750C3D /* TWCalendarMonthView.swift in CopyFiles */,
 				D5D10AA41A3B44A800750C3D /* TWCalendarTile.swift in CopyFiles */,
-				D5D10AA61A3B44A800750C3D /* TWCalendarVC.swift in CopyFiles */,
 				D5D10AA71A3B44A800750C3D /* TWDateAdditions.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,9 +95,7 @@
 		D54C00171A32B978006ED692 /* libTWCalendar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWCalendar.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54C00221A32B978006ED692 /* TWCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TWCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54C00281A32B978006ED692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TWCalendarTests/Info.plist; sourceTree = SOURCE_ROOT; };
-		D54C00331A32BABA006ED692 /* TWCalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWCalendarVC.swift; sourceTree = "<group>"; };
 		D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWCalendarStyler.swift; sourceTree = "<group>"; };
-		D54C00361A32BAE0006ED692 /* TWCalendarValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWCalendarValidator.swift; sourceTree = "<group>"; };
 		D54C00371A32BAE0006ED692 /* TWDateSelectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWDateSelectionHandler.swift; sourceTree = "<group>"; };
 		D54C00381A32BAE0006ED692 /* TWSingleDateSelectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWSingleDateSelectionHandler.swift; sourceTree = "<group>"; };
 		D54C00391A32BAE0006ED692 /* TWRangeDateSelectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWRangeDateSelectionHandler.swift; sourceTree = "<group>"; };
@@ -171,7 +163,6 @@
 				D55009AF1A3D2A510001F0D7 /* Helpers */,
 				D597ACB01A3B3CDC00D0166B /* Models */,
 				D597AC8C1A3B228C00D0166B /* Views */,
-				D54C00331A32BABA006ED692 /* TWCalendarVC.swift */,
 				D54C00481A32C0A5006ED692 /* TWDateAdditions.swift */,
 				D55008881A3C2A1B0001F0D7 /* TWCalendar.h */,
 				D55008921A3C7ED70001F0D7 /* TWCalendar-Bridging-Header.h */,
@@ -184,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */,
-				D54C00361A32BAE0006ED692 /* TWCalendarValidator.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -405,8 +395,6 @@
 				D54C003C1A32BAE0006ED692 /* TWDateSelectionHandler.swift in Sources */,
 				D54C003E1A32BAE0006ED692 /* TWRangeDateSelectionHandler.swift in Sources */,
 				D54C00461A32BB0F006ED692 /* TWCalendarViewModel.swift in Sources */,
-				D54C00341A32BABA006ED692 /* TWCalendarVC.swift in Sources */,
-				D54C003B1A32BAE0006ED692 /* TWCalendarValidator.swift in Sources */,
 				D54C00491A32C0A5006ED692 /* TWDateAdditions.swift in Sources */,
 				D54C00431A32BAFA006ED692 /* TWCalendarMonthView.swift in Sources */,
 			);

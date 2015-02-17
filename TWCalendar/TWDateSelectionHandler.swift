@@ -6,7 +6,6 @@ protocol TWChangeMonthDelegate{
 }
 
 protocol TWDateSelectionHandler {
-    var validator: TWCalendarValidator? {get set}
     var changeMonthDelegate: TWChangeMonthDelegate? {get set}
     func handleDateTapped(tile: TWCalendarTile)
     func handleDrag(recognizer: UIPanGestureRecognizer)

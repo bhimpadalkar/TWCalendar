@@ -1,6 +1,12 @@
 
 import UIKit
 
+public enum MonthType: Int {
+    case Next = -1
+    case Current = 0
+    case Previous = 1
+}
+
 public class TWCalendarView: UIView, TWChangeMonthDelegate {
     
     private var calendarViewModel: TWCalendarViewModel!

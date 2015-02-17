@@ -4,12 +4,7 @@ import UIKit
 class TWSingleDateSelectionHandler: TWDateSelectionHandler {
     var selectedDate: NSDate?
     var selectedDateTile: TWCalendarTile?
-    var validator:TWCalendarValidator?
     var changeMonthDelegate: TWChangeMonthDelegate?
-
-    init(validator: TWCalendarValidator){
-        self.validator = validator
-    }
     
     init(){
         
@@ -22,7 +17,6 @@ class TWSingleDateSelectionHandler: TWDateSelectionHandler {
         selectedDateTile?.refreshView()
         tile.refreshView()
         selectedDateTile = tile
-        validator?.updateDates(selectedDate, endDate: nil)
     }
     
     func handleDrag(recognizer: UIPanGestureRecognizer) {
