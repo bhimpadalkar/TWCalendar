@@ -14,7 +14,6 @@
 				D550094B1A3C8F830001F0D7 /* ShellScript */,
 			);
 			dependencies = (
-				D5500A001A3D30D60001F0D7 /* PBXTargetDependency */,
 				D550094A1A3C8F6F0001F0D7 /* PBXTargetDependency */,
 			);
 			name = Framework;
@@ -23,7 +22,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		D54C00231A32B978006ED692 /* libTWCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D54C00171A32B978006ED692 /* libTWCalendar.a */; };
 		D54C003A1A32BAE0006ED692 /* TWCalendarStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */; };
 		D54C003C1A32BAE0006ED692 /* TWDateSelectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00371A32BAE0006ED692 /* TWDateSelectionHandler.swift */; };
 		D54C003D1A32BAE0006ED692 /* TWSingleDateSelectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00381A32BAE0006ED692 /* TWSingleDateSelectionHandler.swift */; };
@@ -34,7 +32,6 @@
 		D54C00461A32BB0F006ED692 /* TWCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00451A32BB0F006ED692 /* TWCalendarViewModel.swift */; };
 		D54C00491A32C0A5006ED692 /* TWDateAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54C00481A32C0A5006ED692 /* TWDateAdditions.swift */; };
 		D55008D81A3C85CE0001F0D7 /* TWCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = D55008881A3C2A1B0001F0D7 /* TWCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D56BC88C1A427844004ECF84 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D56BC88B1A427844004ECF84 /* Calendar.storyboard */; };
 		D5D10A9C1A3B44A800750C3D /* TWCalendarViewModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00451A32BB0F006ED692 /* TWCalendarViewModel.swift */; };
 		D5D10A9D1A3B44A800750C3D /* TWCalendarStyler.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */; };
 		D5D10A9F1A3B44A800750C3D /* TWDateSelectionHandler.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D54C00371A32BAE0006ED692 /* TWDateSelectionHandler.swift */; };
@@ -47,26 +44,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D54C00241A32B978006ED692 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D54C000F1A32B978006ED692 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D54C00161A32B978006ED692;
-			remoteInfo = TWCalendar;
-		};
 		D55009491A3C8F6F0001F0D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D54C000F1A32B978006ED692 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D54C00161A32B978006ED692;
 			remoteInfo = TWCalendar;
-		};
-		D55009FF1A3D30D60001F0D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D54C000F1A32B978006ED692 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D55009F61A3D302E0001F0D7;
-			remoteInfo = TWCalendarResources;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -93,7 +76,6 @@
 
 /* Begin PBXFileReference section */
 		D54C00171A32B978006ED692 /* libTWCalendar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWCalendar.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D54C00221A32B978006ED692 /* TWCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TWCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54C00281A32B978006ED692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TWCalendarTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWCalendarStyler.swift; sourceTree = "<group>"; };
 		D54C00371A32BAE0006ED692 /* TWDateSelectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWDateSelectionHandler.swift; sourceTree = "<group>"; };
@@ -106,28 +88,10 @@
 		D54C00481A32C0A5006ED692 /* TWDateAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWDateAdditions.swift; sourceTree = "<group>"; };
 		D55008881A3C2A1B0001F0D7 /* TWCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCalendar.h; sourceTree = "<group>"; };
 		D55008921A3C7ED70001F0D7 /* TWCalendar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TWCalendar-Bridging-Header.h"; sourceTree = "<group>"; };
-		D55009F71A3D302E0001F0D7 /* TWCalendar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TWCalendar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D55009FA1A3D302E0001F0D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D56BC88B1A427844004ECF84 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D54C00141A32B978006ED692 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D54C001F1A32B978006ED692 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D54C00231A32B978006ED692 /* libTWCalendar.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D55009F41A3D302E0001F0D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -141,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				D54C00191A32B978006ED692 /* TWCalendar */,
-				D55009F81A3D302E0001F0D7 /* TWCalendarResources */,
 				D54C00181A32B978006ED692 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -150,8 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				D54C00171A32B978006ED692 /* libTWCalendar.a */,
-				D54C00221A32B978006ED692 /* TWCalendarTests.xctest */,
-				D55009F71A3D302E0001F0D7 /* TWCalendar.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,7 +120,6 @@
 		D54C00191A32B978006ED692 /* TWCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				D5500A091A3D33400001F0D7 /* Resources */,
 				D55009AF1A3D2A510001F0D7 /* Helpers */,
 				D597ACB01A3B3CDC00D0166B /* Models */,
 				D597AC8C1A3B228C00D0166B /* Views */,
@@ -177,30 +137,6 @@
 				D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */,
 			);
 			name = Helpers;
-			sourceTree = "<group>";
-		};
-		D55009F81A3D302E0001F0D7 /* TWCalendarResources */ = {
-			isa = PBXGroup;
-			children = (
-				D56BC88B1A427844004ECF84 /* Calendar.storyboard */,
-				D55009F91A3D302E0001F0D7 /* Supporting Files */,
-			);
-			path = TWCalendarResources;
-			sourceTree = "<group>";
-		};
-		D55009F91A3D302E0001F0D7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D55009FA1A3D302E0001F0D7 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D5500A091A3D33400001F0D7 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		D597AC8C1A3B228C00D0166B /* Views */ = {
@@ -257,41 +193,6 @@
 			productReference = D54C00171A32B978006ED692 /* libTWCalendar.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		D54C00211A32B978006ED692 /* TWCalendarTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D54C002E1A32B978006ED692 /* Build configuration list for PBXNativeTarget "TWCalendarTests" */;
-			buildPhases = (
-				D54C001E1A32B978006ED692 /* Sources */,
-				D54C001F1A32B978006ED692 /* Frameworks */,
-				D54C00201A32B978006ED692 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D54C00251A32B978006ED692 /* PBXTargetDependency */,
-			);
-			name = TWCalendarTests;
-			productName = TWCalendarTests;
-			productReference = D54C00221A32B978006ED692 /* TWCalendarTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D55009F61A3D302E0001F0D7 /* TWCalendarResources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D55009FD1A3D302E0001F0D7 /* Build configuration list for PBXNativeTarget "TWCalendarResources" */;
-			buildPhases = (
-				D55009F31A3D302E0001F0D7 /* Sources */,
-				D55009F41A3D302E0001F0D7 /* Frameworks */,
-				D55009F51A3D302E0001F0D7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TWCalendarResources;
-			productName = TWCalendarResources;
-			productReference = D55009F71A3D302E0001F0D7 /* TWCalendar.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -304,13 +205,7 @@
 					D54C00161A32B978006ED692 = {
 						CreatedOnToolsVersion = 6.1;
 					};
-					D54C00211A32B978006ED692 = {
-						CreatedOnToolsVersion = 6.1;
-					};
 					D55009451A3C8F620001F0D7 = {
-						CreatedOnToolsVersion = 6.1;
-					};
-					D55009F61A3D302E0001F0D7 = {
 						CreatedOnToolsVersion = 6.1;
 					};
 				};
@@ -328,30 +223,10 @@
 			projectRoot = "";
 			targets = (
 				D54C00161A32B978006ED692 /* TWCalendar */,
-				D54C00211A32B978006ED692 /* TWCalendarTests */,
 				D55009451A3C8F620001F0D7 /* Framework */,
-				D55009F61A3D302E0001F0D7 /* TWCalendarResources */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		D54C00201A32B978006ED692 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D55009F51A3D302E0001F0D7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D56BC88C1A427844004ECF84 /* Calendar.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		D55009441A3C8E0F0001F0D7 /* Build Framework */ = {
@@ -379,7 +254,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\n# If we're already inside this script then die\nif [ -n \"$RW_MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\nexport RW_MULTIPLATFORM_BUILD_IN_PROGRESS=1\n\nRW_FRAMEWORK_NAME=${PROJECT_NAME}\nRW_INPUT_STATIC_LIB=\"lib${PROJECT_NAME}.a\"\nRW_FRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework\"\n\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\n\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\nRW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\nRW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 3 - Determine the other platform\nif [ \"$RW_SDK_PLATFORM\" == \"iphoneos\" ]; then\nRW_OTHER_PLATFORM=iphonesimulator\nelse\nRW_OTHER_PLATFORM=iphoneos\nfi\n\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$RW_SDK_PLATFORM$ ]]; then\nRW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${RW_OTHER_PLATFORM}\"\nelse\necho \"Could not find other platform build directory.\"\nexit 1\nfi\n\n# Build the other platform.\nbuild_static_library \"${RW_OTHER_PLATFORM}${RW_SDK_VERSION}\"\n\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$RW_SDK_PLATFORM\" == \"iphonesimulator\" ]; then\nbuild_static_library \"${SDK_NAME}\"\nfi\n\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Copy the resources bundle to the user's desktop\nditto \"${BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.bundle\" \\\n\"${RW_FRAMEWORK_NAME}.bundle\"";
+			shellScript = "set -e\n\n# If we're already inside this script then die\nif [ -n \"$RW_MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\nexport RW_MULTIPLATFORM_BUILD_IN_PROGRESS=1\n\nRW_FRAMEWORK_NAME=${PROJECT_NAME}\nRW_INPUT_STATIC_LIB=\"lib${PROJECT_NAME}.a\"\nRW_FRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework\"\n\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\n\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\nRW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\nRW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 3 - Determine the other platform\nif [ \"$RW_SDK_PLATFORM\" == \"iphoneos\" ]; then\nRW_OTHER_PLATFORM=iphonesimulator\nelse\nRW_OTHER_PLATFORM=iphoneos\nfi\n\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$RW_SDK_PLATFORM$ ]]; then\nRW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${RW_OTHER_PLATFORM}\"\nelse\necho \"Could not find other platform build directory.\"\nexit 1\nfi\n\n# Build the other platform.\nbuild_static_library \"${RW_OTHER_PLATFORM}${RW_SDK_VERSION}\"\n\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$RW_SDK_PLATFORM\" == \"iphonesimulator\" ]; then\nbuild_static_library \"${SDK_NAME}\"\nfi\n\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework/Versions/A/${RW_FRAMEWORK_NAME}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -400,37 +275,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D54C001E1A32B978006ED692 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D55009F31A3D302E0001F0D7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D54C00251A32B978006ED692 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D54C00161A32B978006ED692 /* TWCalendar */;
-			targetProxy = D54C00241A32B978006ED692 /* PBXContainerItemProxy */;
-		};
 		D550094A1A3C8F6F0001F0D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D54C00161A32B978006ED692 /* TWCalendar */;
 			targetProxy = D55009491A3C8F6F0001F0D7 /* PBXContainerItemProxy */;
-		};
-		D5500A001A3D30D60001F0D7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D55009F61A3D302E0001F0D7 /* TWCalendarResources */;
-			targetProxy = D55009FF1A3D30D60001F0D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -542,36 +393,6 @@
 			};
 			name = Release;
 		};
-		D54C002F1A32B978006ED692 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TWCalendarTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		D54C00301A32B978006ED692 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TWCalendarTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		D55009471A3C8F620001F0D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -583,39 +404,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		D55009FB1A3D302E0001F0D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TWCalendarResources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_NAME = TWCalendar;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		D55009FC1A3D302E0001F0D7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				INFOPLIST_FILE = TWCalendarResources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_NAME = TWCalendar;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -640,29 +428,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D54C002E1A32B978006ED692 /* Build configuration list for PBXNativeTarget "TWCalendarTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D54C002F1A32B978006ED692 /* Debug */,
-				D54C00301A32B978006ED692 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D55009461A3C8F620001F0D7 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D55009471A3C8F620001F0D7 /* Debug */,
 				D55009481A3C8F620001F0D7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D55009FD1A3D302E0001F0D7 /* Build configuration list for PBXNativeTarget "TWCalendarResources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D55009FB1A3D302E0001F0D7 /* Debug */,
-				D55009FC1A3D302E0001F0D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
