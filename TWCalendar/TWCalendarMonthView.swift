@@ -101,8 +101,9 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
         }
     }
     
-    func setDateSelectionHandler(dateSelectionHandler : TWDateSelectionHandler){
+    func setDateSelectionHandler(dateSelectionHandler : TWDateSelectionHandler, delegate: TWChangeMonthDelegate){
         self.dateSelectionHandler = dateSelectionHandler
+        self.dateSelectionHandler!.changeMonthDelegate = delegate
         if let handler = (dateSelectionHandler as? TWRangeDateSelectionHandler){
             handler.rangeSelectionDelegate = self
             handler.styler = TWCalendarStyler(tileSize: self.tileSize, xOffset: CGFloat(self.xOffset), yOffset: CGFloat(self.yOffset))
@@ -111,9 +112,5 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
     
     func handleDrag(recognizer: UIPanGestureRecognizer){
         dateSelectionHandler?.handleDrag(recognizer)
-    }
-    
-    func setChangeMonthDelegate(delegate: TWChangeMonthDelegate){
-        dateSelectionHandler?.changeMonthDelegate = delegate
     }
 }

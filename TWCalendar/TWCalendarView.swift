@@ -79,22 +79,20 @@ public class TWCalendarView: UIView, TWChangeMonthDelegate {
         
         var panGesture = UIPanGestureRecognizer(target: monthView!, action: "handleDrag:")
         self.monthView.addGestureRecognizer(panGesture)
-        self.monthView.setChangeMonthDelegate(self)
         
         let handler = isSingleDateMode() ? TWSingleDateSelectionHandler() : TWRangeDateSelectionHandler() as TWDateSelectionHandler
-        monthView.setDateSelectionHandler(handler)
+        monthView.setDateSelectionHandler(handler, delegate: self)
         monthView.setSelectedDates(startDate, endDate: endDate)
         showMonthViewFor(.Current)
     }
     
     private func showMonthViewFor(monthType: MonthType){
-        slide(monthType)
         if(monthType == .Next){
             calendarViewModel.moveToNextMonth()
         } else if (monthType == .Previous){
             calendarViewModel.moveToPreviousMonth()
         }
-        updateMonthView()
+        slide(monthType)
     }
     
     private func updateMonthView(){
@@ -116,6 +114,7 @@ public class TWCalendarView: UIView, TWChangeMonthDelegate {
                 frame.origin.x = 0
                 self.frame = frame
                 self.isTransitioning = false
+                self.updateMonthView()
         }
     }
     
