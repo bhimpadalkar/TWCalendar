@@ -12,6 +12,9 @@ public class TWCalendarView: UIView, TWChangeMonthDelegate {
     private var startDate: NSDate?
     private var endDate: NSDate?
     
+    
+    //MARK: - Lifecycle methods
+    
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -29,6 +32,8 @@ public class TWCalendarView: UIView, TWChangeMonthDelegate {
     public override func drawRect(rect: CGRect) {
         addMonthView()
     }
+    
+    //MARK: - Public APIs
     
     public func initializeCalendar(startDate: NSDate?, endDate: NSDate?, minDate: NSDate?, maxDate: NSDate?, selectionMode: NSString) {
         self.selectionMode = selectionMode
@@ -48,6 +53,23 @@ public class TWCalendarView: UIView, TWChangeMonthDelegate {
         showMonthViewFor(.Previous)
     }
     
+    public func getSelectedDate() -> NSDate? {
+        return monthView.getSelectedDates().0
+    }
+    
+    public func getSelectedDateRange() -> (NSDate?, NSDate?) {
+        return monthView.getSelectedDates()
+    }
+    
+    //MARK: - Delegate Methods
+    
+    func changeMonthTo(monthType: MonthType) {
+        if(isTransitioning) {return}
+        showMonthViewFor(monthType)
+    }
+    
+    //MARK: - Private Methods
+    
     private func addMonthView() {
         var frameForMonthView = self.bounds
         frameForMonthView.origin.x = leftMargin
@@ -63,11 +85,6 @@ public class TWCalendarView: UIView, TWChangeMonthDelegate {
         monthView.setDateSelectionHandler(handler)
         monthView.setSelectedDates(startDate, endDate: endDate)
         showMonthViewFor(.Current)
-    }
-    
-    func changeMonthTo(monthType: MonthType) {
-        if(isTransitioning) {return}
-        showMonthViewFor(monthType)
     }
     
     private func showMonthViewFor(monthType: MonthType){

@@ -33,8 +33,8 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
         self.rangeEndDate = endDate
     }
     
-    func getSelectedDates() -> (NSDate, NSDate?){
-        return (rangeStartDate!, rangeEndDate)
+    func getSelectedDates() -> (NSDate?, NSDate?){
+        return (rangeStartDate, rangeEndDate)
     }
     
     func resetSelection(){

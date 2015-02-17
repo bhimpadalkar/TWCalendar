@@ -47,8 +47,8 @@ class TWSingleDateSelectionHandler: TWDateSelectionHandler {
         selectedDate = startDate
     }
     
-    func getSelectedDates() -> (NSDate, NSDate?){
-        return (selectedDate!, nil)
+    func getSelectedDates() -> (NSDate?, NSDate?){
+        return (selectedDate, nil)
     }
     
     func resetSelection(){

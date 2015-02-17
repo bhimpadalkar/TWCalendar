@@ -14,5 +14,5 @@ protocol TWDateSelectionHandler {
     func populatePreviousHighlighting(baseDate: NSDate)
     func resetSelection()
     func setSelectedDates(startDate: NSDate?, endDate: NSDate?)
-    func getSelectedDates() -> (NSDate, NSDate?)
+    func getSelectedDates() -> (NSDate?, NSDate?)
 }
