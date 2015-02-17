@@ -76,7 +76,6 @@
 
 /* Begin PBXFileReference section */
 		D54C00171A32B978006ED692 /* libTWCalendar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWCalendar.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D54C00281A32B978006ED692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TWCalendarTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		D54C00351A32BAE0006ED692 /* TWCalendarStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWCalendarStyler.swift; sourceTree = "<group>"; };
 		D54C00371A32BAE0006ED692 /* TWDateSelectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWDateSelectionHandler.swift; sourceTree = "<group>"; };
 		D54C00381A32BAE0006ED692 /* TWSingleDateSelectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWSingleDateSelectionHandler.swift; sourceTree = "<group>"; };
@@ -126,7 +125,6 @@
 				D54C00481A32C0A5006ED692 /* TWDateAdditions.swift */,
 				D55008881A3C2A1B0001F0D7 /* TWCalendar.h */,
 				D55008921A3C7ED70001F0D7 /* TWCalendar-Bridging-Header.h */,
-				D54C00281A32B978006ED692 /* Info.plist */,
 			);
 			path = TWCalendar;
 			sourceTree = "<group>";
