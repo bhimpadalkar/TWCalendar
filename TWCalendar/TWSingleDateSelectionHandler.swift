@@ -5,6 +5,7 @@ class TWSingleDateSelectionHandler: TWDateSelectionHandler {
     var selectedDate: NSDate?
     var selectedDateTile: TWCalendarTile?
     var changeMonthDelegate: TWChangeMonthDelegate?
+    var changeDateDelegate: TWCalendarDateDelegate?
     
     init(){
         
@@ -17,6 +18,7 @@ class TWSingleDateSelectionHandler: TWDateSelectionHandler {
         selectedDateTile?.refreshView()
         tile.refreshView()
         selectedDateTile = tile
+        changeDateDelegate?.didSelectDate(selectedDate)
     }
     
     func handleDrag(recognizer: UIPanGestureRecognizer) {

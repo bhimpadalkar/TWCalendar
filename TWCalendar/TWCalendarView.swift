@@ -7,7 +7,7 @@ public enum MonthType: Int {
     case Previous = 1
 }
 
-public class TWCalendarView: UIView, TWChangeMonthDelegate {
+public class TWCalendarView: UIView, TWChangeMonthDelegate, TWCalendarDateDelegate {
     
     private var calendarViewModel: TWCalendarViewModel!
     var selectionMode: NSString!
@@ -17,7 +17,7 @@ public class TWCalendarView: UIView, TWChangeMonthDelegate {
     var isTransitioning = false
     private var startDate: NSDate?
     private var endDate: NSDate?
-    
+    var delegate: TWCalendarDelegate?
     
     //MARK: - Lifecycle methods
     
@@ -72,6 +72,15 @@ public class TWCalendarView: UIView, TWChangeMonthDelegate {
     func changeMonthTo(monthType: MonthType) {
         if(isTransitioning) {return}
         showMonthViewFor(monthType)
+        delegate?.didChangeMonth?(self, monthAndYear: calendarViewModel.monthAndYearString)
+    }
+    
+    func didSelectDate(selectedDate: NSDate!) {
+        delegate?.didSelectDate?(self, selectedDate: selectedDate)
+    }
+    
+    func didSelectDateRange(startDate: NSDate!, endDate: NSDate!) {
+        delegate?.didSelectDateRange?(self, startDate: startDate, endDate: endDate)
     }
     
     //MARK: - Private Methods
@@ -87,7 +96,7 @@ public class TWCalendarView: UIView, TWChangeMonthDelegate {
         self.monthView.addGestureRecognizer(panGesture)
         
         let handler = isSingleDateMode() ? TWSingleDateSelectionHandler() : TWRangeDateSelectionHandler() as TWDateSelectionHandler
-        monthView.setDateSelectionHandler(handler, delegate: self)
+        monthView.setDateSelectionHandler(handler, changeMonthDelegate: self, changeDateDelegate: self)
         monthView.setSelectedDates(startDate, endDate: endDate)
         showMonthViewFor(.Current)
     }

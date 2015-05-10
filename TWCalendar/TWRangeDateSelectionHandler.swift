@@ -17,6 +17,7 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
     private let kSwipThreshold: CGFloat = 700
     var rangeSelectionDelegate: TWRangeSelectionDelegate?
     var changeMonthDelegate: TWChangeMonthDelegate?
+    var changeDateDelegate: TWCalendarDateDelegate?
     var styler: TWCalendarStyler?
     
     init() {
@@ -70,6 +71,7 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
             rangeEndDate = tile.date
             endDateSelectedTile = tile
             highlightSelection(tile.date!)
+            changeDateDelegate?.didSelectDateRange(rangeStartDate, endDate: rangeEndDate)
         }
         changeSelectedStateFor(tile, toState: true)
     }
@@ -145,6 +147,7 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
         rangeSelectionDelegate?.didStartNewRangeSelectionWith()
         changeSelectedStateFor(newTile, toState: true)
         highlightSelection(newTile!.date!)
+        changeDateDelegate?.didSelectDateRange(rangeStartDate, endDate: rangeEndDate)
     }
     
     private func isStartSameAsEnd() -> Bool{

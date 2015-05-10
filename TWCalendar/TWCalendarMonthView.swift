@@ -101,9 +101,10 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
         }
     }
     
-    func setDateSelectionHandler(dateSelectionHandler : TWDateSelectionHandler, delegate: TWChangeMonthDelegate){
+    func setDateSelectionHandler(dateSelectionHandler : TWDateSelectionHandler, changeMonthDelegate: TWChangeMonthDelegate, changeDateDelegate: TWCalendarDateDelegate){
         self.dateSelectionHandler = dateSelectionHandler
-        self.dateSelectionHandler!.changeMonthDelegate = delegate
+        self.dateSelectionHandler!.changeMonthDelegate = changeMonthDelegate
+        self.dateSelectionHandler!.changeDateDelegate = changeDateDelegate
         if let handler = (dateSelectionHandler as? TWRangeDateSelectionHandler){
             handler.rangeSelectionDelegate = self
             handler.styler = TWCalendarStyler(tileSize: self.tileSize, xOffset: CGFloat(self.xOffset), yOffset: CGFloat(self.yOffset))
