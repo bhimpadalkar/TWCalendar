@@ -24,7 +24,7 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
     }
 
     required init(coder aDecoder: NSCoder) {
-        super.init()
+        super.init(coder: aDecoder)
     }
     
     private func createHeaderTiles(xOffset: Int){
@@ -32,7 +32,7 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
         for (i,week) in enumerate(weekNames){
             let frame = CGRect(x: i * xOffset, y: 0, width: Int(tileSize.width), height: Int(tileSize.height))
             var tileView = TWCalendarTile(frame: frame, position:TilePosition(row:0, column:i))
-            tileView.setTileData(week)
+            tileView.updateTileData(week)
             dateTiles.append(tileView)
             addSubview(tileView)
         }
@@ -56,7 +56,7 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
         dateSelectionHandler?.resetSelection()
         for i in 0...dates.count-1 {
             for j in 0...dates[i].count-1 {
-                let d = dates[i][j] as NSDate;
+                let d = dates[i][j] as! NSDate;
                 let tile = dateTiles[tileNum] as TWCalendarTile
                 tile.resetData()
                 tile.date = d
@@ -70,7 +70,7 @@ class TWCalendarMonthView: UIView, TWRangeSelectionDelegate {
                 tileNum++;
             }
         }
-        dateSelectionHandler?.populatePreviousHighlighting(datesOfCurrentMonth[0] as NSDate)
+        dateSelectionHandler?.populatePreviousHighlighting(datesOfCurrentMonth[0] as! NSDate)
     }
     
     func handleDateTap(sender: TWCalendarTile){

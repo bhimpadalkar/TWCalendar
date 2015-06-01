@@ -28,16 +28,16 @@ class TWCalendarTile: UIButton {
     }   
 
     required init(coder aDecoder: NSCoder) {
-        super.init()
+        super.init(coder: aDecoder)
     }
     
-    func setTileData(tileData: NSString){
+    func updateTileData(tileData: String){
         self.tileData = tileData
         self.setTitle(tileData, forState: UIControlState.Normal)
     }
     
     func refreshView(){
-        setTileData(String(date!.day()))
+        updateTileData(String(date!.day()))
         let titleColor = self.enabled ? UIColor.whiteColor() : UIColor.grayColor()
         self.setTitleColor(titleColor, forState: .Normal)
         if(selected){

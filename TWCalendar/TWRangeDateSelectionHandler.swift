@@ -183,7 +183,7 @@ class TWRangeDateSelectionHandler: TWDateSelectionHandler {
         let bottomRightPosition = TilePosition(row: 6, column:6)
         var viewToBeHighligted = [UIView]()
         
-        if(startDateSelectedTile? != nil && endDateSelectedTile? != nil){
+        if(startDateSelectedTile != nil && endDateSelectedTile != nil){
             viewToBeHighligted = styler!.createViewForRange(startTilePosition!, endPosition: endTilePosition!)
         }
         else if(endDateSelectedTile != nil){
